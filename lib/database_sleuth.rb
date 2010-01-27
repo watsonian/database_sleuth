@@ -34,10 +34,10 @@ class DatabaseSleuth
   @@app_metadata[:mediawiki] = {
     :locations => ["LocalSettings.php"],
     :regex => {
-      :dbname => Regexp.new("\\$wgDBname\\s*=\\s*'(.*?)'"),
-      :dbuser => Regexp.new("\\$wgDBuser\\s*=\\s*'(.*?)'"),
-      :dbpass => Regexp.new("\\$wgDBpassword\\s*=\\s*'(.*?)'"),
-      :dbhost => Regexp.new("\\$wgDBserver\\s*=\\s*'(.*?)'"),
+      :dbname => Regexp.new("\\$wgDBname\\s*=\\s*['\"](.*?)['\"]"),
+      :dbuser => Regexp.new("\\$wgDBuser\\s*=\\s*['\"](.*?)['\"]"),
+      :dbpass => Regexp.new("\\$wgDBpassword\\s*=\\s*['\"](.*?)['\"]"),
+      :dbhost => Regexp.new("\\$wgDBserver\\s*=\\s*['\"](.*?)['\"]"),
     },
   }
   @@app_metadata[:phpbb] = {
