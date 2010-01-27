@@ -1,17 +1,38 @@
-= database-finder
+= database_sleuth
 
-Description goes here.
+This library is designed to parse popular web application configuration files
+to extract database connection information for use in other applications or
+scripts.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+To get started, simply require the library:
+
+  require 'database_sleuth'
+
+Then, simply create a new instance of the class specifying which application
+you're collecting information from (note that the library expects the config
+file to be located in the directory the executing file is running from):
+
+  sleuth = DatabaseSleuth.new(:joomla)
+  sleuth.find_db_info
+  sleuth.dbhost #=> mysql.example.com
+  sleuth.dbname #=> somedbname
+  sleuth.dbuser #=> someusername
+  sleuth.dbpass #=> somepassword
+  
+  sleuth.manual_connection_string #=> mysql -u someusername -psomepassword -h mysql.example.com somedbname
+
+= Supported Applications
+
+Currently, the following applications are supported:
+
+* Drupal
+* Gallery
+* Joomla
+* MediaWiki
+* phpBB
+* WordPress
+* ZenCart
 
 == Copyright
 
-Copyright (c) 2010 watsonian. See LICENSE for details.
+Copyright (c) 2010 Joel Watson. See LICENSE for details.
